@@ -29,6 +29,7 @@ gem 'devise', '~> 4.4', '>= 4.4.1'
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+gem 'searchkick', '~> 2.4'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
