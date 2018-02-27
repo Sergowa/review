@@ -1,14 +1,14 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
 
-  def search
+   def search
     if params[:search].present?
-      @movies = Movie.search(params[:search])
+      @movies = Movie.search(params[:search], fields: [:title])
     else
       @movies = Movie.all
-    end    
-  end  
+    end
+  end
 
   # GET /movies
   # GET /movies.json

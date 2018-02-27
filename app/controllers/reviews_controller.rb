@@ -33,9 +33,15 @@ class ReviewsController < ApplicationController
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
   def update
+    @review.movie_id = @movie.id
+
     respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to @review }
+        if @review.rating == nil
+          @review.rating = 1
+          @review.save
+        end 
+        format.html { redirect_to @movie }
         format.json { render :show, status: :ok, location: @review }
       else
         format.html { render :edit }
@@ -49,7 +55,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review.destroy
     respond_to do |format|
-      format.html { redirect_to reviews_url }
+      format.html { redirect_to @movie }
       format.json { head :no_content }
     end
   end
